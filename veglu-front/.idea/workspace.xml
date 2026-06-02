@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2ea713ea-5a91-40f0-94b7-6f28d8ecdbdb" name="변경" comment="Feat: 마이페이지, 프로필수정 기능 구현">
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/FindAccountForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/FindAccountForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/SignUpForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/SignUpForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/SocialLogin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/SocialLogin.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="loginmodal" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;hjp7208&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ksw1360/GFV-Map-FrontEnd.git&quot;,
+    &quot;accountId&quot;: &quot;3349252a-5ace-4edb-9d9e-5af0ec0eebb3&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3EWXiubm5tr1P7fLJo0w169NrrI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "apitest",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/NextjsProjects/veglu/veglu-front",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2026.1\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="2ea713ea-5a91-40f0-94b7-6f28d8ecdbdb" name="변경" comment="" />
+      <created>1780295429519</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780295429519</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Feat: 메인페이지 구현&#10;Fix: src/app/page.tsx 메인페이지 구현에 맞춰 수정">
+      <option name="closed" value="true" />
+      <created>1780299891479</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1780299891479</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Feat: 헤더에 로그아웃 버튼 생성">
+      <option name="closed" value="true" />
+      <created>1780300491619</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1780300491619</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Feat: 사진첩 모달창 구현">
+      <option name="closed" value="true" />
+      <created>1780302906606</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780302906606</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Feat: 마이페이지, 프로필수정 기능 구현">
+      <option name="closed" value="true" />
+      <created>1780306043172</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1780306043172</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Feat: 메인페이지 구현&#10;Fix: src/app/page.tsx 메인페이지 구현에 맞춰 수정" />
+    <MESSAGE value="Feat: 헤더에 로그아웃 버튼 생성" />
+    <MESSAGE value="Feat: 사진첩 모달창 구현" />
+    <MESSAGE value="Feat: 마이페이지, 프로필수정 기능 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: 마이페이지, 프로필수정 기능 구현" />
+  </component>
+</project>
