@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/veglufront.iml" filepath="$PROJECT_DIR$/.idea/veglufront.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/GFV-Map-FrontEnd-loginmodal.iml" filepath="$PROJECT_DIR$/.idea/GFV-Map-FrontEnd-loginmodal.iml" />
     </modules>
   </component>
 </project>
