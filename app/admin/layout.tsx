@@ -14,7 +14,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     <VegluLogo />
                 </Link>
                 <div className="flex items-center gap-4 text-sm text-gray-600">
-                    <Link href="/login" className="hover:text-gray-900">로그인</Link>
                     <Link href="/logout" className="hover:text-gray-900">로그아웃</Link>
                 </div>
             </header>

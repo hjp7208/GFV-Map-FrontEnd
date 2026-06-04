@@ -14,7 +14,7 @@ export default function AdminStoreTabs({ storeId }: { storeId: string }) {
     const pathname = usePathname();
 
     return (
-        <nav className="flex border-b border-gray-200 px-5">
+        <nav className="flex justify-center border-b border-gray-200 px-5">
             {TABS.map((tab) => {
                 const href = tab.href(storeId);
                 const isActive =

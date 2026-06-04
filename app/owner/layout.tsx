@@ -22,7 +22,6 @@ function Header() {
             </Link>
             <div className="flex items-center gap-4 text-sm text-gray-600">
                 <Link href="/login" className="hover:text-gray-900">로그아웃</Link>
-                <Link href="/owner/mypage" className="hover:text-gray-900">마이페이지</Link>
             </div>
         </header>
     );

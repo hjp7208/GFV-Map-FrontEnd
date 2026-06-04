@@ -2,9 +2,7 @@
 
 import { useState } from 'react';
 import StoreTabs from '@/components/owner/StoreTabs';
-import ReviewFilterModal from "@/components/owner/ReviewFilterModal";
 import ReviewReplyDrawer from "@/components/owner/ReviewReplyDrawer";
-import ReviewDeleteModal from "@/components/owner/ReviewDeleteModal";
 
 type Review = {
     id: string;
@@ -80,9 +78,7 @@ export default function ReviewClient({ params }: { params: { id: string } }) {
                 </ul>
             </div>
 
-            {showFilter && <ReviewFilterModal filters={filters} onChange={setFilters} onClose={() => setShowFilter(false)} />}
             {replyTarget && <ReviewReplyDrawer review={replyTarget} value={replyText} onChange={setReplyText} onSubmit={handleSubmitReply} onClose={() => setReplyTarget(null)} />}
-            {deleteTarget && <ReviewDeleteModal onConfirm={handleDeleteReply} onCancel={() => setDeleteTarget(null)} />}
         </div>
     );
 }

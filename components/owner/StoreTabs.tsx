@@ -16,7 +16,7 @@ export default function StoreTabs({ storeId }: { storeId: string }) {
     ];
 
     return (
-        <nav className="flex border-b border-gray-200 px-5">
+        <nav className="flex justify-center border-b border-gray-200 px-5">
             {TABS.map((tab) => {
                 const isActive = tab.label === '홈'
                     ? pathname === tab.path

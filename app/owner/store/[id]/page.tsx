@@ -28,7 +28,7 @@ function InfoRow({
     return (
         <div className="flex gap-2 text-xs text-gray-600">
             {label && (
-                <span className="text-gray-400 w-6 flex-shrink-0">
+                <span className="text-gray-400 w-20 flex-shrink-0 whitespace-nowrap">
                     {label}
                 </span>
             )}
@@ -115,7 +115,7 @@ export default function StoreHomePage({
                         />
 
                         <InfoRow
-                            label=""
+                            label="브레이크타임"
                             value={store.breakTime}
                         />
 
@@ -124,9 +124,11 @@ export default function StoreHomePage({
                             value={store.phone}
                         />
 
-                        <p className="text-xs text-gray-500 leading-relaxed mt-1">
-                            {store.address}
-                        </p>
+                        <InfoRow
+                            label="위치"
+                            value={store.address}
+                        />
+
                     </div>
                 </div>
             </div>

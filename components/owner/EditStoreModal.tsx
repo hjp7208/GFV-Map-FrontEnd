@@ -3,137 +3,129 @@
 import { useState } from 'react';
 
 type Store = {
+    id: string;
     name: string;
+    rating: number;
     hours: string;
     breakTime: string;
     phone: string;
     address: string;
-};
-
-type Props = {
-    store: Store;
-    onClose: () => void;
-    onSave: (store: Store) => void;
+    thumbnail: string;
 };
 
 export default function EditStoreModal({
                                            store,
                                            onClose,
                                            onSave,
-                                       }: Props) {
+                                       }: {
+    store: Store;
+    onClose: () => void;
+    onSave: (updated: Partial<Store>) => void;
+}) {
     const [name, setName] = useState(store.name);
     const [hours, setHours] = useState(store.hours);
     const [breakTime, setBreakTime] = useState(store.breakTime);
     const [phone, setPhone] = useState(store.phone);
     const [address, setAddress] = useState(store.address);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+    // 숫자·기호만 허용 (문자 입력 차단)
+    function filterTimeInput(value: string) {
+        return value.replace(/[^0-9:~\-\s]/g, '');
+    }
 
-        onSave({
-            name,
-            hours,
-            breakTime,
-            phone,
-            address,
-        });
-    };
+    function filterPhoneInput(value: string) {
+        return value.replace(/[^0-9\-]/g, '');
+    }
+
+    function handleSave() {
+        onSave({ name, hours, breakTime, phone, address });
+    }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-            <div className="bg-white rounded-xl p-6 w-full max-w-sm shadow-xl">
-                <h3 className="text-lg font-bold mb-4">
-                    가게 정보 수정
-                </h3>
+        <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
+            onClick={onClose}
+        >
+            <div
+                className="bg-white rounded-2xl shadow-2xl w-full max-w-sm mx-4 px-6 py-6"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <h2 className="text-base font-semibold text-gray-900 mb-5">가게 정보 수정</h2>
 
-                <form
-                    className="space-y-3"
-                    onSubmit={handleSubmit}
-                >
+                <div className="flex flex-col gap-4">
+                    {/* 가게 이름 */}
                     <div>
-                        <label className="block text-xs text-gray-500">
-                            가게명
-                        </label>
+                        <label className="text-xs text-gray-500 mb-1 block">가게 이름</label>
                         <input
+                            type="text"
                             value={name}
-                            onChange={(e) =>
-                                setName(e.target.value)
-                            }
-                            className="w-full border rounded-lg p-2 text-sm"
+                            onChange={(e) => setName(e.target.value)}
+                            className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-green-500"
                         />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2">
-                        <div>
-                            <label className="block text-xs text-gray-500">
-                                영업시간
-                            </label>
-                            <input
-                                value={hours}
-                                onChange={(e) =>
-                                    setHours(e.target.value)
-                                }
-                                className="w-full border rounded-lg p-2 text-sm"
-                            />
-                        </div>
-
-                        <div>
-                            <label className="block text-xs text-gray-500">
-                                전화번호
-                            </label>
-                            <input
-                                value={phone}
-                                onChange={(e) =>
-                                    setPhone(e.target.value)
-                                }
-                                className="w-full border rounded-lg p-2 text-sm"
-                            />
-                        </div>
+                    {/* 영업시간 */}
+                    <div>
+                        <label className="text-xs text-gray-500 mb-1 block">영업시간</label>
+                        <input
+                            type="text"
+                            value={hours}
+                            onChange={(e) => setHours(filterTimeInput(e.target.value))}
+                            placeholder="예: 10:00 - 22:00"
+                            className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-green-500"
+                        />
                     </div>
 
+                    {/* 브레이크타임 */}
                     <div>
-                        <label className="block text-xs text-gray-500">
-                            브레이크타임
-                        </label>
+                        <label className="text-xs text-gray-500 mb-1 block">브레이크타임</label>
                         <input
+                            type="text"
                             value={breakTime}
-                            onChange={(e) =>
-                                setBreakTime(e.target.value)
-                            }
-                            className="w-full border rounded-lg p-2 text-sm"
+                            onChange={(e) => setBreakTime(filterTimeInput(e.target.value))}
+                            placeholder="예: 15:00 - 17:00"
+                            className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-green-500"
                         />
                     </div>
 
+                    {/* 전화번호 */}
                     <div>
-                        <label className="block text-xs text-gray-500">
-                            주소
-                        </label>
+                        <label className="text-xs text-gray-500 mb-1 block">전화번호</label>
                         <input
-                            value={address}
-                            onChange={(e) =>
-                                setAddress(e.target.value)
-                            }
-                            className="w-full border rounded-lg p-2 text-sm"
+                            type="text"
+                            value={phone}
+                            onChange={(e) => setPhone(filterPhoneInput(e.target.value))}
+                            placeholder="예: 02-123-4567"
+                            className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-green-500"
                         />
                     </div>
 
-                    <div className="flex gap-2 pt-4">
-                        <button
-                            type="button"
-                            onClick={onClose}
-                            className="flex-1 py-2 bg-gray-100 rounded-lg text-sm"
-                        >
-                            취소
-                        </button>
-
-                        <button
-                            type="submit"
-                            className="flex-1 py-2 bg-black text-white rounded-lg text-sm"
-                        >
-                            저장하기
-                        </button>
+                    {/* 주소 */}
+                    <div>
+                        <label className="text-xs text-gray-500 mb-1 block">주소</label>
+                        <input
+                            type="text"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-green-500"
+                        />
                     </div>
-                </form>
+                </div>
+
+                <div className="flex gap-3 mt-6">
+                    <button
+                        onClick={onClose}
+                        className="flex-1 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
+                    >
+                        취소
+                    </button>
+                    <button
+                        onClick={handleSave}
+                        className="flex-1 py-2.5 text-sm font-medium text-white bg-green-700 rounded-xl hover:bg-green-800 transition-colors"
+                    >
+                        저장
+                    </button>
+                </div>
             </div>
         </div>
     );

@@ -20,7 +20,7 @@ export default function ReportedReviewCard({
     const [open, setOpen] = useState(false);
 
     return (
-        <li className="py-4 relative">
+        <li className="py-4 relative z-0 hover:z-10">
             <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-2">
                     <div className="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
@@ -42,7 +42,7 @@ export default function ReportedReviewCard({
             </p>
 
             {open && (
-                <div className="absolute top-10 right-0 z-10 bg-white border border-gray-200 rounded-lg shadow-lg py-1 min-w-[120px]">
+                <div className="absolute top-10 right-0 z-20 bg-white border border-gray-200 rounded-lg shadow-lg py-1 min-w-[120px]">
                     <button
                         onClick={() => { setOpen(false); onDelete(); }}
                         className="w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-gray-50"
