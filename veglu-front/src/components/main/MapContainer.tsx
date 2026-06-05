@@ -23,12 +23,11 @@ export default function MapContainer({ restaurants, selectedId }: MapContainerPr
     const clustererInstance = useRef<any>(null);
     const markersRef = useRef<any[]>([]);
 
-    // 💡 [방어선 구축] kakao 객체가 완전히 준비되었을 때만 안전하게 지도를 그리는 이니셜라이저
+    // 지도를 진짜 생성하는 이니셜라이저 본체
     const initKakaoMap = () => {
-        if (typeof window === 'undefined' || !window.kakao || !window.kakao.maps || !mapContainerRef.current) {
-            console.warn('⚠️ 카카오 지도 인프라가 아직 로드되지 않아 대기합니다.');
-            return;
-        }
+        // 이미 지도가 생성되어 있다면 중복 생성을 방지합니다.
+        if (mapInstance.current) return;
+        if (!mapContainerRef.current) return;
 
         const container = mapContainerRef.current;
         const options = {
@@ -79,6 +78,19 @@ export default function MapContainer({ restaurants, selectedId }: MapContainerPr
         clusterer.addMarkers(newMarkers);
     };
 
+    // ──────────────────────────────────────────────────────────
+    // 🎯 [결정적 교정 핵심] onLoad 배신을 방어하는 실시간 이니셜라이저 트리거
+    // ──────────────────────────────────────────────────────────
+    useEffect(() => {
+        // 이미 스크립트가 브라우저에 존재해서 onLoad가 안 돌 때를 대비한 안전 가드
+        if (typeof window !== 'undefined' && window.kakao && window.kakao.maps) {
+            window.kakao.maps.load(() => {
+                initKakaoMap();
+            });
+        }
+    }, []);
+    // ──────────────────────────────────────────────────────────
+
     useEffect(() => {
         if (mapInstance.current) {
             drawMapMarkers();
@@ -98,17 +110,12 @@ export default function MapContainer({ restaurants, selectedId }: MapContainerPr
     }, [selectedId, restaurants]);
 
     return (
-        // 💡 부모의 찌그러짐을 원천 차단하는 안전 뷰포트 레이아웃 틀
         <div className="absolute inset-0 min-w-full min-h-full bg-gray-100 z-0">
-            {/* 💡 [교정 구역]
-              1. 프로토콜(https:) 명시
-              2. afterInteractive로 부드럽게 지연 로드하되, onLoad 순간에 kakao 내부 수동 부팅 명령 집행!
-            */}
             <Script
-                src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=4f896162df4492722dcacb46156da66c&autoload=false&libraries=clusterer"
+                src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=604e9a64453d6167f7a58e8231871b49&autoload=false&libraries=clusterer"
                 strategy="afterInteractive"
                 onLoad={() => {
-                    // 스크립트 파일이 디스크에 다운로드 완료된 순간 수동 부팅 락 해제
+                    // 처음 스크립트가 로드되었을 때 실행되는 안전 통로
                     if (window.kakao && window.kakao.maps) {
                         window.kakao.maps.load(initKakaoMap);
                     }
