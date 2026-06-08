@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface Restaurant {
     restaurantId: number;
@@ -16,10 +16,17 @@ interface SidebarProps {
     restaurants: Restaurant[];
     selectedIndex: number | null;
     onShopSelect: (index: number) => void;
+    isOpenProps: boolean; // 💡 부모에게 사이드바 상태 전역 수입
+    onToggleSidebar: (open: boolean) => void; // 💡 상태가 바뀔 때 부모에게 보고할 콜백 통로
 }
 
-export default function Sidebar({ restaurants, selectedIndex, onShopSelect }: SidebarProps) {
-    const [isOpen, setIsOpen] = useState(true);
+export default function Sidebar({
+                                    restaurants,
+                                    selectedIndex,
+                                    onShopSelect,
+                                    isOpenProps,
+                                    onToggleSidebar
+                                }: SidebarProps) {
     const [sortRule, setSortRule] = useState('distance');
 
     const processedList = [...restaurants].sort((a, b) => {
@@ -29,18 +36,20 @@ export default function Sidebar({ restaurants, selectedIndex, onShopSelect }: Si
         return a.restaurantId - b.restaurantId;
     });
 
+    // 💡 접기/펴기 버튼을 누를 때, 내 내부 상태만 바꾸는 게 아니라 부모 타워의 센서까지 즉시 동기화 제어합니다.
+    const handleToggleClick = () => {
+        const nextState = !isOpenProps;
+        onToggleSidebar(nextState);
+    };
+
     return (
-        /* 🎯 [전체 오버레이 컨테이너]
-           사이드바 본체와 토글 버튼이 한 가족처럼 묶여서 이동하도록 absolute 레이어를 고수합니다.
-        */
+        /* 전체 오버레이 absolute 컨테이너 (지도 클릭 관통 허용) */
         <div className="absolute inset-y-0 left-0 flex h-full z-10 pointer-events-none">
 
-            {/* 🎯 [사이드바 메인 패널]
-                w-[360px] 고정 크기에서 열고 닫힐 때 'transform duration-300' 애니메이션을 탑재합니다.
-            */}
+            {/* 사이드바 본체 패널 (isOpenProps 스위치에 따라 300ms 슬라이딩) */}
             <div
                 className={`bg-white border-r border-gray-200 h-full flex flex-col transition-all duration-300 pointer-events-auto shadow-2xl flex-shrink-0 ${
-                    isOpen
+                    isOpenProps
                         ? 'w-[360px] translate-x-0'
                         : 'w-[360px] -translate-x-full overflow-hidden border-r-0'
                 }`}
@@ -86,25 +95,20 @@ export default function Sidebar({ restaurants, selectedIndex, onShopSelect }: Si
                 </div>
             </div>
 
-            {/* 🎯 [대혁명 구역: 접기/펴기 토글 버튼 트랙커]
-              기존에 버튼 레이어가 혼자 공중에 굳어있던 버그를 격파합니다!
-              사이드바 본체의 이동 명령줄인 `isOpen` 스위치 상태를 고스란히 공유받아서,
-              사이드바가 닫힐 때 본체 꼬리에 딱 달라붙어 'transition-all duration-300' 모션과 함께
-              좌측 벽으로 `-translate-x-[360px]` 동시 순간이동 슬라이딩을 수행합니다!
-            */}
             <div
                 className={`flex items-center h-full pointer-events-auto flex-shrink-0 transition-all duration-300 ease-out ${
-                    isOpen
+                    isOpenProps
                         ? 'transform translate-x-0'
-                        : 'transform -translate-x-[360px]' // 💡 본체가 숨은 거리만큼 바짝 쫓아갑니다!
+                        : 'transform -translate-x-[360px]'
                 }`}
             >
                 <button
-                    onClick={() => setIsOpen(!isOpen)}
+                    type="button"
+                    onClick={handleToggleClick} // 💡 위에서 선언한 연동 제어 함수 호출
                     className="bg-white border border-gray-200 border-l-0 hover:bg-gray-50 text-gray-600 p-2 rounded-r-xl shadow-md transition-all -ml-[1px] h-14 flex items-center justify-center font-bold text-sm z-30"
-                    title={isOpen ? '사이드바 접기' : '사이드바 열기'}
+                    title={isOpenProps ? '사이드바 접기' : '사이드바 열기'}
                 >
-                    {isOpen ? '◀' : '▶'}
+                    {isOpenProps ? '◀' : '▶'}
                 </button>
             </div>
         </div>

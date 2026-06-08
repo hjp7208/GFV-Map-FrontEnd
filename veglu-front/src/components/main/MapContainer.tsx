@@ -172,7 +172,7 @@ export default function MapContainer({ restaurants, selectedIndex, onMarkerSelec
     }, [selectedIndex]);
 
     return (
-        <div className="absolute inset-0 min-w-full min-h-full bg-gray-100 z-0">
+        <div className="relative w-full h-full bg-gray-100 z-0">
             <Script
                 src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=604e9a64453d6167f7a58e8231871b49&autoload=false&libraries=clusterer"
                 strategy="afterInteractive"
