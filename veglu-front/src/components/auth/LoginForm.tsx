@@ -7,9 +7,10 @@ import SocialLogin from './SocialLogin';
 interface LoginFormProps {
     setViewMode: (mode: 'LOGIN' | 'SIGNUP' | 'FIND_ID' | 'FIND_PW') => void;
     onClose: () => void;
+    onLoginSuccess: () => void;
 }
 
-export default function LoginForm({ setViewMode, onClose }: LoginFormProps) {
+export default function LoginForm({ setViewMode, onClose, onLoginSuccess }: LoginFormProps) {
     const router = useRouter();
 
     const [email, setEmail] = useState('');
@@ -67,7 +68,9 @@ export default function LoginForm({ setViewMode, onClose }: LoginFormProps) {
             // ──────────────────────────────────────────────────────────
 
             // ◀ 모달을 닫아준 직후, 지도가 있는 메인 홈('/')으로 즉시 내비게이션 이동
-            onClose();
+            if (onLoginSuccess) {
+                onLoginSuccess();
+            }
 
             // 💡 팁: 상태 세션 변화를 감지해 헤더나 사이드바 UI를 한 번에 새로고침 렌더링하려면
             window.location.href = '/';

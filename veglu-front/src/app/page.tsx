@@ -151,6 +151,10 @@ export default function MainPage() {
 
     const handleModalClose = () => {
         setIsAuthOpen(false);
+    };
+
+    const handleLoginSuccess = () => {
+        setIsAuthOpen(false);
         setIsLoggedIn(true);
         fetchInitialRestaurants();
     };
@@ -226,7 +230,11 @@ export default function MainPage() {
                 </div>
             )}
 
-            <AuthModal isOpen={isAuthOpen} onClose={handleModalClose} />
+            <AuthModal
+                isOpen={isAuthOpen}
+                onClose={handleModalClose}
+                onLoginSuccess={handleLoginSuccess}
+            />
         </>
     );
 }
