@@ -158,7 +158,7 @@ export default function RestaurantDetailSheet({ restaurant, onClose, isSidebarOp
             await createPhoto({
                 url: url,
                 type: 'RESTAURANT',
-                restaurant_id: stableRestaurantId,
+                restaurantId: stableRestaurantId,
                 menuId: undefined,
                 caption: "식당 사진",
                 isMain: false
