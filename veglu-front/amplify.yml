@@ -1,20 +1,20 @@
 version: 1
-frontend:
-  phases:
-    preBuild:
-      commands:
-        - cd veglu-front
-        - npm ci
-    build:
-      commands:
-        - cd veglu-front
-        - echo "NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}" > .env.production
-        - npm run build
-  artifacts:
-    baseDirectory: veglu-front/out
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - veglu-front/node_modules/**/*
-      - veglu-front/.next/cache/**/*
+applications:
+  - appRoot: veglu-front
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+        build:
+          commands:
+            - echo "NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}" > .env.production
+            - npm run build
+      artifacts:
+        baseDirectory: out
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - .next/cache/**/*
