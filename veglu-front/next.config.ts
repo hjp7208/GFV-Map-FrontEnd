@@ -1,19 +1,7 @@
 import type { NextConfig } from "next";
 
-const nextConfig = {
-  output: 'export',
-  images: {
-    unoptimized: true,
-  },
-  trailingSlash: true,
-  experimental: {
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  }
+const nextConfig: NextConfig = {
+  
 };
 
 export default nextConfig;
