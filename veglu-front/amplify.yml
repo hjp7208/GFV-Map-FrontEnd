@@ -11,10 +11,9 @@ frontend:
         - echo "NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}" > .env.production
         - npm run build
   artifacts:
-    baseDirectory: veglu-front/.next
+    baseDirectory: veglu-front/out
     files:
       - '**/*'
   cache:
     paths:
       - veglu-front/node_modules/**/*
-      - veglu-front/.next/cache/**/*
