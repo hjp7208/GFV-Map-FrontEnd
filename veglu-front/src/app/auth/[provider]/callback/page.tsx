@@ -1,7 +1,11 @@
 'use client';
 
+import React from 'react';
 import { useEffect, useState, useRef } from 'react';
 import { useRouter, useParams, useSearchParams } from 'next/navigation';
+
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
 
 export default function IntegratedSocialAuthCallbackPage() {
     const router = useRouter();
