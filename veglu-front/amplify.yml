@@ -3,15 +3,18 @@ frontend:
   phases:
     preBuild:
       commands:
+        - cd veglu-front
         - npm ci
     build:
       commands:
+        - cd veglu-front
         - echo "NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL}" > .env.production
         - npm run build
   artifacts:
-    baseDirectory: out
+    baseDirectory: veglu-front/out
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
+      - veglu-front/node_modules/**/*
+      - veglu-front/.next/cache/**/*
